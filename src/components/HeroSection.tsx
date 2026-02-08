@@ -33,7 +33,7 @@ const HeroSection = () => {
         >
           <img
             src={slides[current]}
-            alt="Isabella Ferreira"
+            alt="Emilly Mayra"
             className="w-full h-full object-cover"
             loading="eager"
           />
@@ -58,9 +58,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 leading-tight"
         >
-          Isabella
-          <br />
-          <span className="italic font-normal">Ferreira</span>
+          Emilly <span className="italic font-normal">Mayra</span>
+          
         </motion.h1>
 
         <motion.p

@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="font-display text-xl font-bold text-foreground">
           <span className={scrolled ? "text-foreground" : "text-primary-foreground"}>
-            Isabella <span className="italic font-normal">F.</span>
+            Emilly <span className="italic font-normal">M.</span>
           </span>
         </a>
 

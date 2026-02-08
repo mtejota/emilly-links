@@ -7,7 +7,7 @@ import brandNatura from "@/assets/brand-natura.png";
 import brandShein from "@/assets/brand-shein.png";
 
 const stats = [
-  { label: "Seguidores", end: 520, suffix: "K+" },
+  { label: "Seguidores", end: 100, suffix: "K+" },
   { label: "Alcance Mensal", end: 2.5, suffix: "M", decimals: 1 },
   { label: "Engajamento", end: 4.8, suffix: "%", decimals: 1 },
   { label: "Marcas Parceiras", end: 40, suffix: "+" },
