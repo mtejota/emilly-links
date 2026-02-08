@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Produtos", href: "#produtos" },
+  { label: "Quem sou eu ", href: "#sobre" },
   { label: "Parcerias", href: "#parcerias" },
   { label: "Contato", href: "#contato" },
 ];

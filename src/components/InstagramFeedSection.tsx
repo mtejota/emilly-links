@@ -120,7 +120,7 @@ const SocialMediaSection = () => {
                 <div className="w-full h-full bg-black">
                   <img
                     src="/tiktok-screen.jpeg"
-                    alt="TikTok @emillymayra"
+                    alt="TikTok @meninahers"
                     className="w-full h-full object-cover"
                   />
                 </div>

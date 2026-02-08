@@ -1,37 +1,43 @@
 import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
-import brandLoreal from "@/assets/brand-loreal.png";
+import brandshopee from "@/assets/brand-loreal.png";
 import brandSephora from "@/assets/brand-sephora.png";
 import brandFarm from "@/assets/brand-farm.png";
 import brandNatura from "@/assets/brand-natura.png";
 import brandShein from "@/assets/brand-shein.png";
 
 const stats = [
-  { label: "Seguidores", end: 40, suffix: "K+" },
-  { label: "Alcance Mensal", end: 2.5, suffix: "M", decimals: 1 },
+  { label: "Seguidores", end: 50, suffix: "K+" },
+  { label: "Alcance Mensal", end: 1.5, suffix: "M", decimals: 1 },
   { label: "Engajamento", end: 4.8, suffix: "%", decimals: 1 },
-  { label: "Marcas Parceiras", end: 40, suffix: "+" },
+  { label: "Marcas Parceiras", end: 35, suffix: "+" },
 ];
 
 const brands = [
-  { name: "L'Oréal", logo: brandLoreal },
+  { name: "L'shopee", logo: brandshopee },
   { name: "Sephora", logo: brandSephora },
   { name: "Farm", logo: brandFarm },
   { name: "Natura", logo: brandNatura },
   { name: "Shein", logo: brandShein },
 ];
 
-const testimonials = [
+const demographics = [
   {
-    quote: "Parceria incrível! A Isabella entrega conteúdo de alta qualidade com resultados reais.",
-    author: "Marina Costa",
-    role: "Marketing Manager, Sephora",
+    title: "Principais Cidades",
+    items: ["São Paulo", "João Pessoa", "Rio de Janeiro", "Salvador"]
   },
   {
-    quote: "Profissionalismo e autenticidade. Os resultados superaram nossas expectativas.",
-    author: "Carlos Mendes",
-    role: "Brand Director, Natura",
+    title: "Faixa Etária",
+    items: ["18 a 54 anos"]
   },
+  {
+    title: "Interesses",
+    items: ["Estilo de Vida", "Moda", "Beleza"]
+  },
+  {
+    title: "Público",
+    items: ["97% Feminino", "3% Masculino"]
+  }
 ];
 
 const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix: string; decimals?: number; label: string }) => {
@@ -44,14 +50,12 @@ const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix
       <p
         className="font-display text-4xl md:text-5xl font-bold mb-2"
         style={{
-          background: "linear-gradient(135deg, hsl(15, 60%, 55%), hsl(40, 70%, 50%))",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          color: "#874637"
         }}
       >
         {display}{suffix}
       </p>
-      <p className="text-primary-foreground/60 font-body text-sm tracking-wide uppercase">
+      <p className="font-body text-sm tracking-wide uppercase" style={{ color: "#874637" }}>
         {label}
       </p>
     </div>
@@ -60,8 +64,20 @@ const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix
 
 const SocialProofSection = () => {
   return (
-    <section className="section-padding bg-foreground text-primary-foreground">
-      <div className="max-w-6xl mx-auto">
+    <section className="section-padding relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/public/metricas_emilly.jpg"
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
+        {/* Light overlay for subtle contrast */}
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
+
+      {/* Content */}
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Stats with count-up */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -71,8 +87,42 @@ const SocialProofSection = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
         >
           {stats.map((stat) => (
-            <CountUpStat key={stat.label} end={stat.end} suffix={stat.suffix} decimals={stat.decimals} label={stat.label} />
+            <div key={stat.label} className="backdrop-blur-md bg-white/80 rounded-2xl p-6">
+              <CountUpStat end={stat.end} suffix={stat.suffix} decimals={stat.decimals} label={stat.label} />
+            </div>
           ))}
+        </motion.div>
+
+        {/* Demographics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-20"
+        >
+          <p className="font-body text-xs tracking-[0.3em] uppercase mb-10 text-center text-white drop-shadow-lg">
+            Audiência
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {demographics.map((demo) => (
+              <div
+                key={demo.title}
+                className="border border-white/20 rounded-2xl p-6 text-center backdrop-blur-md bg-white/80"
+              >
+                <h3 className="font-display text-lg font-semibold mb-4" style={{ color: "#874637" }}>
+                  {demo.title}
+                </h3>
+                <div className="space-y-2">
+                  {demo.items.map((item, index) => (
+                    <p key={index} className="font-body text-sm text-gray-700">
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Brand Logos */}
@@ -80,47 +130,23 @@ const SocialProofSection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
         >
-          <p className="text-primary-foreground/40 font-body text-xs tracking-[0.3em] uppercase mb-10">
-            Marcas parceiras
+          <p className="font-body text-xs tracking-[0.3em] uppercase mb-10 text-white drop-shadow-lg">
+            Marcas que já trabalhei
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 backdrop-blur-md bg-white/70 rounded-3xl p-8">
             {brands.map((brand) => (
               <motion.img
                 key={brand.name}
                 src={brand.logo}
                 alt={brand.name}
-                className="h-10 md:h-14 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-300 brightness-200"
+                className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
                 whileHover={{ scale: 1.1 }}
               />
             ))}
           </div>
-        </motion.div>
-
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid md:grid-cols-2 gap-8"
-        >
-          {testimonials.map((t) => (
-            <div
-              key={t.author}
-              className="border border-primary-foreground/10 rounded-2xl p-8"
-            >
-              <p className="font-body text-primary-foreground/80 leading-relaxed mb-6 italic">
-                "{t.quote}"
-              </p>
-              <div>
-                <p className="font-body font-medium text-primary-foreground">{t.author}</p>
-                <p className="font-body text-sm text-primary-foreground/50">{t.role}</p>
-              </div>
-            </div>
-          ))}
         </motion.div>
       </div>
     </section>

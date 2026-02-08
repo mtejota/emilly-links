@@ -13,9 +13,9 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ProductsSection />
-      <PartnershipsSection />
       <SocialProofSection />
       <InstagramFeedSection />
+      <PartnershipsSection />
       <ContactSection />
       <Footer />
     </main>
