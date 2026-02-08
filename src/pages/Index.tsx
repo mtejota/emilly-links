@@ -4,6 +4,7 @@ import ProductsSection from "@/components/ProductsSection";
 import PartnershipsSection from "@/components/PartnershipsSection";
 import ContactSection from "@/components/ContactSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import InstagramFeedSection from "@/components/InstagramFeedSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,6 +15,7 @@ const Index = () => {
       <ProductsSection />
       <PartnershipsSection />
       <SocialProofSection />
+      <InstagramFeedSection />
       <ContactSection />
       <Footer />
     </main>
