@@ -1,14 +1,24 @@
 import { motion } from "framer-motion";
+import { useCountUp } from "@/hooks/useCountUp";
+import brandLoreal from "@/assets/brand-loreal.png";
+import brandSephora from "@/assets/brand-sephora.png";
+import brandFarm from "@/assets/brand-farm.png";
+import brandNatura from "@/assets/brand-natura.png";
+import brandShein from "@/assets/brand-shein.png";
 
 const stats = [
-  { label: "Seguidores", value: "520K+" },
-  { label: "Alcance Mensal", value: "2.5M" },
-  { label: "Engajamento", value: "4.8%" },
-  { label: "Marcas Parceiras", value: "40+" },
+  { label: "Seguidores", end: 520, suffix: "K+" },
+  { label: "Alcance Mensal", end: 2.5, suffix: "M", decimals: 1 },
+  { label: "Engajamento", end: 4.8, suffix: "%", decimals: 1 },
+  { label: "Marcas Parceiras", end: 40, suffix: "+" },
 ];
 
 const brands = [
-  "L'Oréal", "Sephora", "Zara", "Farm", "Natura", "Shein",
+  { name: "L'Oréal", logo: brandLoreal },
+  { name: "Sephora", logo: brandSephora },
+  { name: "Farm", logo: brandFarm },
+  { name: "Natura", logo: brandNatura },
+  { name: "Shein", logo: brandShein },
 ];
 
 const testimonials = [
@@ -24,11 +34,35 @@ const testimonials = [
   },
 ];
 
+const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix: string; decimals?: number; label: string }) => {
+  const numericEnd = decimals ? Math.round(end * Math.pow(10, decimals)) : end;
+  const { count, ref } = useCountUp(numericEnd, 2000);
+  const display = decimals ? (count / Math.pow(10, decimals)).toFixed(decimals) : count;
+
+  return (
+    <div ref={ref} className="text-center">
+      <p
+        className="font-display text-4xl md:text-5xl font-bold mb-2"
+        style={{
+          background: "linear-gradient(135deg, hsl(15, 60%, 55%), hsl(40, 70%, 50%))",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {display}{suffix}
+      </p>
+      <p className="text-primary-foreground/60 font-body text-sm tracking-wide uppercase">
+        {label}
+      </p>
+    </div>
+  );
+};
+
 const SocialProofSection = () => {
   return (
     <section className="section-padding bg-foreground text-primary-foreground">
       <div className="max-w-6xl mx-auto">
-        {/* Stats */}
+        {/* Stats with count-up */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,14 +71,7 @@ const SocialProofSection = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-display text-4xl md:text-5xl font-bold text-gradient mb-2 ![-webkit-text-fill-color:initial]" style={{ background: 'linear-gradient(135deg, hsl(15, 60%, 55%), hsl(40, 70%, 50%))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                {stat.value}
-              </p>
-              <p className="text-primary-foreground/60 font-body text-sm tracking-wide uppercase">
-                {stat.label}
-              </p>
-            </div>
+            <CountUpStat key={stat.label} end={stat.end} suffix={stat.suffix} decimals={stat.decimals} label={stat.label} />
           ))}
         </motion.div>
 
@@ -56,17 +83,18 @@ const SocialProofSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-20"
         >
-          <p className="text-primary-foreground/40 font-body text-xs tracking-[0.3em] uppercase mb-8">
-            Marcas que já trabalhei
+          <p className="text-primary-foreground/40 font-body text-xs tracking-[0.3em] uppercase mb-10">
+            Marcas parceiras
           </p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
             {brands.map((brand) => (
-              <span
-                key={brand}
-                className="font-display text-xl md:text-2xl text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors cursor-default"
-              >
-                {brand}
-              </span>
+              <motion.img
+                key={brand.name}
+                src={brand.logo}
+                alt={brand.name}
+                className="h-10 md:h-14 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-300 brightness-200"
+                whileHover={{ scale: 1.1 }}
+              />
             ))}
           </div>
         </motion.div>
