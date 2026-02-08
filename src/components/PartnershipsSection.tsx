@@ -37,7 +37,7 @@ const PartnershipsSection = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
-              Vamos trabalhar juntos
+              Vamos trabalhar juntas
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Parcerias & Publicidade
@@ -47,7 +47,7 @@ const PartnershipsSection = () => {
             </p>
             <div className="space-y-3 text-muted-foreground font-body text-sm mb-8">
               <p>🎯 <strong className="text-foreground">Nichos:</strong> Beleza, Moda, Lifestyle, Skincare, Bem-estar</p>
-              <p>📊 <strong className="text-foreground">Alcance:</strong> +500K seguidores combinados</p>
+              <p>📊 <strong className="text-foreground">Alcance:</strong> +40k seguidores combinados</p>
               <p>💬 <strong className="text-foreground">Engajamento:</strong> Taxa média de 4.8%</p>
             </div>
             <a

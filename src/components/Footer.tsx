@@ -1,7 +1,7 @@
 import { Instagram, Youtube, MessageCircle } from "lucide-react";
 
 const socials = [
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com/emillymayra" },
   {
     icon: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -9,9 +9,9 @@ const socials = [
       </svg>
     ),
     label: "TikTok",
-    href: "https://tiktok.com",
+    href: "https://www.tiktok.com/@meninahers",
   },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com" },
+  { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@emillymayraa" },
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/5511999999999" },
 ];
 
@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="flex flex-col items-center gap-8">
           {/* Name */}
           <h3 className="font-display text-2xl font-bold text-foreground">
-            Isabella <span className="italic font-normal">Ferreira</span>
+            Emilly <span className="italic font-normal">Mayra</span>
           </h3>
 
           {/* Socials */}
@@ -43,7 +43,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-muted-foreground font-body text-sm">
-            © {new Date().getFullYear()} Isabella Ferreira. Todos os direitos reservados.
+            © {new Date().getFullYear()} Emilly mayra. Todos os direitos reservados.
           </p>
         </div>
       </div>

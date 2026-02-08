@@ -1,110 +1,139 @@
 import { motion } from "framer-motion";
-import { Instagram, Heart, MessageCircle } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
-import instaPost1 from "@/assets/insta-post-1.jpg";
-import instaPost2 from "@/assets/insta-post-2.jpg";
-import instaPost3 from "@/assets/insta-post-3.jpg";
 
-const posts = [
-  { image: instaPost1, likes: "12.4K", comments: "342", caption: "Minha rotina de skincare favorita ✨" },
-  { image: instaPost2, likes: "9.8K", comments: "218", caption: "Acessórios que não saem da minha bolsa 👜" },
-  { image: instaPost3, likes: "15.1K", comments: "487", caption: "Maquiagem do dia 💄" },
-];
-
-const InstagramFeedSection = () => {
-  const { count: followers, ref } = useCountUp(520, 1800);
+const SocialMediaSection = () => {
+  const { count: instagramFollowers, ref: instagramRef } = useCountUp(36, 1800);
+  const { count: tiktokFollowers, ref: tiktokRef } = useCountUp(22.4, 1800);
 
   return (
     <section className="section-padding bg-background">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header - Centralizado */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full gradient-gold flex items-center justify-center">
-              <Instagram className="w-6 h-6 text-gold-foreground" />
-            </div>
-            <div className="text-left">
-              <p className="font-display text-lg font-semibold text-foreground">@isabella.ferreira</p>
-              <p ref={ref} className="font-body text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">{followers}K</span> seguidores
-              </p>
-            </div>
-          </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Acompanhe no Instagram
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            Siga nas Redes Sociais
           </h2>
-          <p className="font-body text-muted-foreground max-w-md mx-auto">
-            Confira as últimas postagens e fique por dentro de tudo
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Conteúdos exclusivos, rotina e dicas compartilhadas diariamente.
           </p>
         </motion.div>
 
-        {/* Posts Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-10">
-          {posts.map((post, i) => (
-            <motion.a
-              key={i}
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group relative overflow-hidden rounded-2xl aspect-square"
+        {/* Grid com Instagram e TikTok */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+
+          {/* Instagram */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center"
+          >
+            {/* Instagram Header */}
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 flex items-center justify-center">
+                <Instagram className="w-6 h-6 text-white" />
+              </div>
+              <div className="text-left">
+                <p className="font-display text-lg font-semibold">
+                  @emillymayra
+                </p>
+                <p ref={instagramRef} className="text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">{instagramFollowers}K</span> seguidores
+                </p>
+              </div>
+            </div>
+
+            {/* Instagram iPhone */}
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-[280px] md:w-[300px]"
             >
-              <img
-                src={post.image}
-                alt={post.caption}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                  <div className="flex items-center gap-6 mb-3">
-                    <span className="flex items-center gap-1.5 text-primary-foreground font-body font-medium">
-                      <Heart className="w-5 h-5 fill-current" /> {post.likes}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-primary-foreground font-body font-medium">
-                      <MessageCircle className="w-5 h-5" /> {post.comments}
-                    </span>
-                  </div>
-                  <p className="text-primary-foreground/80 font-body text-sm max-w-[200px]">
-                    {post.caption}
-                  </p>
+              <div className="relative rounded-[48px] border-[8px] border-black bg-black shadow-2xl overflow-hidden aspect-[9/19.5]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-7 bg-black rounded-b-3xl z-10" />
+                <div className="w-full h-full bg-white">
+                  <img
+                    src="/instagram-screen.jpeg"
+                    alt="Instagram @emillymayra"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
-            </motion.a>
-          ))}
+              <div className="absolute inset-0 rounded-[48px] bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-orange-500/20 blur-3xl -z-10 scale-110" />
+            </motion.div>
+          </motion.div>
+
+          {/* TikTok */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center"
+          >
+            {/* TikTok Header */}
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
+                <svg 
+                  className="w-7 h-7" 
+                  viewBox="0 0 24 24" 
+                  fill="none"
+                >
+                  <path 
+                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" 
+                    fill="#00f2ea"
+                  />
+                  <path 
+                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" 
+                    fill="#ff004f"
+                    transform="translate(1, 1)"
+                  />
+                </svg>
+              </div>
+              <div className="text-left">
+                <p className="font-display text-lg font-semibold">
+                  @emillymayra
+                </p>
+                <p ref={tiktokRef} className="text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">{tiktokFollowers}K</span> seguidores
+                </p>
+              </div>
+            </div>
+
+            {/* TikTok iPhone */}
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="relative w-[280px] md:w-[300px]"
+            >
+              <div className="relative rounded-[48px] border-[8px] border-black bg-black shadow-2xl overflow-hidden aspect-[9/19.5]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-7 bg-black rounded-b-3xl z-10" />
+                <div className="w-full h-full bg-black">
+                  <img
+                    src="/tiktok-screen.jpeg"
+                    alt="TikTok @emillymayra"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="absolute inset-0 rounded-[48px] bg-gradient-to-br from-cyan-500/20 via-pink-500/20 to-red-500/20 blur-3xl -z-10 scale-110" />
+            </motion.div>
+          </motion.div>
+
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
-        >
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-body text-sm font-medium text-primary hover:text-primary/80 transition-colors tracking-wide"
-          >
-            <Instagram className="w-4 h-4" />
-            Ver mais no Instagram
-          </a>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default InstagramFeedSection;
+export default SocialMediaSection;
