@@ -69,7 +69,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-primary-foreground/90 font-body text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
         >
-          Influenciadora Digital | Empresaria
+          Influenciadora Digital | Empresária
         </motion.p>
 
         <motion.div

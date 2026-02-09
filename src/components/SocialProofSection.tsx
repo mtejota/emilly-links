@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 import brandshopee from "/logo_shopee.png";
+import brandtemu from "/temu_logo.png";
 import brandnarte from "/logo_narte.png";
 import brandloreal from "/loreal_logo.png";
 import brandmpago from "/mpago_logo.png";
@@ -9,7 +10,9 @@ import brandagua from "/agua_luz_logo.png";
 import brandsg from "/sg_logo.png";
 import brandysy from "/ysy_logo.png";
 import brandskelt from "/skelt_logo.png";
-
+import brandmahav from "/mahav_logo.png";
+import brandkaisan from "/kaisan_logo.png";
+import brandniely from "/niely_gold_logo.png";
 
 
 const stats = [
@@ -21,6 +24,7 @@ const stats = [
 
 const brands = [
   { name: "shopee", logo: brandshopee },
+  {name: "temu", logo: brandtemu},
   { name: "narte", logo: brandnarte },
   { name: "loreal", logo: brandloreal },
   { name: "Mercado Pago", logo: brandmpago },
@@ -28,7 +32,10 @@ const brands = [
   { name: "Agua e luz", logo: brandagua },
   { name: "sg germain" ,logo: brandsg},
   { name: "ysy", logo: brandysy},
-  { name: "ysy", logo: brandskelt},
+  { name: "skelt", logo: brandskelt},
+  { name: "mahav", logo:brandmahav},
+  { name: "kaisan", logo: brandkaisan},
+  { name: "nielygold", logo: brandniely},
 ];
 
 const demographics = [
@@ -73,9 +80,6 @@ const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix
 };
 
 const SocialProofSection = () => {
-  // Duplicar as logos para criar efeito de loop infinito
-  const duplicatedBrands = [...brands, ...brands];
-
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background Image */}
@@ -149,35 +153,64 @@ const SocialProofSection = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase mb-10 text-white drop-shadow-lg">
             Marcas que já trabalhei
           </p>
-          <div className="backdrop-blur-md bg-white/70 rounded-3xl p-8 overflow-hidden">
+          <div className="backdrop-blur-md bg-white/50 rounded-3xl p-8 overflow-hidden">
             <div className="relative w-full overflow-hidden">
-              <motion.div
-                className="flex gap-10 md:gap-16"
-                animate={{
-                  x: [0, -100 * brands.length],
-                }}
-                transition={{
-                  x: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 20,
-                    ease: "linear",
-                  },
-                }}
-              >
-                {duplicatedBrands.map((brand, index) => (
-                  <div
-                    key={`${brand.name}-${index}`}
-                    className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
-                  >
-                    <img
-                      src={brand.logo}
-                      alt={brand.name}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                ))}
-              </motion.div>
+              <div className="flex">
+                <motion.div
+                  className="flex gap-[3cm] flex-shrink-0"
+                  animate={{
+                    x: [0, -1 * ((160 + 113.4) * brands.length)],
+                  }}
+                  transition={{
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: brands.length * 1.5,
+                      ease: "linear",
+                    },
+                  }}
+                >
+                  {brands.map((brand, index) => (
+                    <div
+                      key={`${brand.name}-${index}-1`}
+                      className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
+                    >
+                      <img
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+                <motion.div
+                  className="flex gap-[3cm] flex-shrink-0"
+                  animate={{
+                    x: [0, -1 * ((160 + 113.4) * brands.length)],
+                  }}
+                  transition={{
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: brands.length * 1.5,
+                      ease: "linear",
+                    },
+                  }}
+                >
+                  {brands.map((brand, index) => (
+                    <div
+                      key={`${brand.name}-${index}-2`}
+                      className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
+                    >
+                      <img
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>
