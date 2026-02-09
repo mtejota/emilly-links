@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
-import brandshopee from "@/assets/brand-loreal.png";
-import brandSephora from "@/assets/brand-sephora.png";
-import brandFarm from "@/assets/brand-farm.png";
-import brandNatura from "@/assets/brand-natura.png";
-import brandShein from "@/assets/brand-shein.png";
+import brandshopee from "/logo_shopee.png";
+import brandnarte from "/logo_narte.png";
+import brandloreal from "/loreal_logo.png";
+import brandmpago from "/mpago_logo.png";
+import brandmlivre from "/mlivre_logo.png";
+import brandagua from "/agua_luz_logo.png";
+import brandsg from "/sg_logo.png";
+import brandysy from "/ysy_logo.png";
+import brandskelt from "/skelt_logo.png";
+
+
 
 const stats = [
   { label: "Seguidores", end: 50, suffix: "K+" },
@@ -14,11 +20,15 @@ const stats = [
 ];
 
 const brands = [
-  { name: "L'shopee", logo: brandshopee },
-  { name: "Sephora", logo: brandSephora },
-  { name: "Farm", logo: brandFarm },
-  { name: "Natura", logo: brandNatura },
-  { name: "Shein", logo: brandShein },
+  { name: "shopee", logo: brandshopee },
+  { name: "narte", logo: brandnarte },
+  { name: "loreal", logo: brandloreal },
+  { name: "Mercado Pago", logo: brandmpago },
+  { name: "Mercado livre", logo: brandmlivre },
+  { name: "Agua e luz", logo: brandagua },
+  { name: "sg germain" ,logo: brandsg},
+  { name: "ysy", logo: brandysy},
+  { name: "ysy", logo: brandskelt},
 ];
 
 const demographics = [
@@ -63,6 +73,9 @@ const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix
 };
 
 const SocialProofSection = () => {
+  // Duplicar as logos para criar efeito de loop infinito
+  const duplicatedBrands = [...brands, ...brands];
+
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background Image */}
@@ -125,7 +138,7 @@ const SocialProofSection = () => {
           </div>
         </motion.div>
 
-        {/* Brand Logos */}
+        {/* Brand Logos - Infinite Scroll */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -136,16 +149,36 @@ const SocialProofSection = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase mb-10 text-white drop-shadow-lg">
             Marcas que já trabalhei
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 backdrop-blur-md bg-white/70 rounded-3xl p-8">
-            {brands.map((brand) => (
-              <motion.img
-                key={brand.name}
-                src={brand.logo}
-                alt={brand.name}
-                className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                whileHover={{ scale: 1.1 }}
-              />
-            ))}
+          <div className="backdrop-blur-md bg-white/70 rounded-3xl p-8 overflow-hidden">
+            <div className="relative w-full overflow-hidden">
+              <motion.div
+                className="flex gap-10 md:gap-16"
+                animate={{
+                  x: [0, -100 * brands.length],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {duplicatedBrands.map((brand, index) => (
+                  <div
+                    key={`${brand.name}-${index}`}
+                    className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
+                  >
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
