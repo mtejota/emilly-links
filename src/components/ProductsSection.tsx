@@ -16,7 +16,7 @@ const AboutSection = () => {
           >
             <div className="relative rounded-3xl overflow-hidden">
               <img
-                src="/emilly_produtosection.jpg" // 👈 imagem em /public
+                src="public/emilly_produtosection.JPG" // 👈 imagem em /public
                 alt="Quem é Emilly"
                 className="w-full h-full object-cover"
               />
