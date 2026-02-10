@@ -17,7 +17,7 @@ import brandniely from "/niely_gold_logo.png";
 
 
 const stats = [
-  { label: "Seguidores", end: 50, suffix: "K+" },
+  { label: "Seguidores", end: 58.5, suffix: "K+" },
   { label: "Alcance Mensal", end: 1.5, suffix: "M", decimals: 1 },
   { label: "Engajamento", end: 4.8, suffix: "%", decimals: 1 },
   { label: "Marcas Parceiras", end: 35, suffix: "+" },

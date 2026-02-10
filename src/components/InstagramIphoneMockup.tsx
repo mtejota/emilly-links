@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import instagramScreen from "public/instagram-screen.jpeg";
+import instagramScreen from "/instagram-screen.jpeg";
 
 const InstagramIphoneMockup = () => {
   return (
@@ -11,7 +11,8 @@ const InstagramIphoneMockup = () => {
       className="relative mx-auto w-[260px] md:w-[300px]"
     >
       {/* iPhone Body */}
-      <div className="relative rounded-[40px] border-[6px] border-black bg-black shadow-2xl overflow-hidden">
+      <div className="relative aspect-[9/19.5] rounded-[40px] border-[6px] border-black bg-black shadow-2xl overflow-hidden">
+        
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-10" />
 
@@ -19,7 +20,7 @@ const InstagramIphoneMockup = () => {
         <img
           src={instagramScreen}
           alt="Instagram Profile"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
 
