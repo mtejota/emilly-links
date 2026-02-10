@@ -58,7 +58,7 @@ const SocialPhones = () => {
     <section className="relative w-full py-24 overflow-hidden">
       <div
         className="absolute inset-0 bg-right md:bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/public/herounic.jpg')" }}
+        style={{ backgroundImage: "url('/herounic.jpg')" }}
       />
       <div className="absolute inset-0 bg-black/20" />
 
