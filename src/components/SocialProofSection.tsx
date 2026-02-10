@@ -82,7 +82,7 @@ const SocialProofSection = () => {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="/metricas_emilly.jpg"
+          src="/metricas_emilly.JPG"
           alt="Background"
           className="w-full h-full object-cover"
         />
