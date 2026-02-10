@@ -15,6 +15,7 @@ import brandkaisan from "/kaisan_logo.png";
 import brandniely from "/niely_gold_logo.png";
 
 
+
 const stats = [
   { label: "Seguidores", end: 50, suffix: "K+" },
   { label: "Alcance Mensal", end: 1.5, suffix: "M", decimals: 1 },
@@ -24,53 +25,49 @@ const stats = [
 
 const brands = [
   { name: "shopee", logo: brandshopee },
-  {name: "temu", logo: brandtemu},
+  { name: "temu", logo: brandtemu },
   { name: "narte", logo: brandnarte },
   { name: "loreal", logo: brandloreal },
   { name: "Mercado Pago", logo: brandmpago },
-  { name: "Mercado livre", logo: brandmlivre },
-  { name: "Agua e luz", logo: brandagua },
-  { name: "sg germain" ,logo: brandsg},
-  { name: "ysy", logo: brandysy},
-  { name: "skelt", logo: brandskelt},
-  { name: "mahav", logo:brandmahav},
-  { name: "kaisan", logo: brandkaisan},
-  { name: "nielygold", logo: brandniely},
+  { name: "Mercado Livre", logo: brandmlivre },
+  { name: "Agua e Luz", logo: brandagua },
+  { name: "SG Germain", logo: brandsg },
+  { name: "YSY", logo: brandysy },
+  { name: "Skelt", logo: brandskelt },
+  { name: "Mahav", logo: brandmahav },
+  { name: "Kaisan", logo: brandkaisan },
+  { name: "Niely Gold", logo: brandniely },
 ];
 
 const demographics = [
-  {
-    title: "Principais Cidades",
-    items: ["São Paulo", "João Pessoa", "Rio de Janeiro", "Salvador"]
-  },
-  {
-    title: "Faixa Etária",
-    items: ["18 a 54 anos"]
-  },
-  {
-    title: "Interesses",
-    items: ["Estilo de Vida", "Moda", "Beleza"]
-  },
-  {
-    title: "Público",
-    items: ["97% Feminino", "3% Masculino"]
-  }
+  { title: "Principais Cidades", items: ["São Paulo", "João Pessoa", "Rio de Janeiro", "Salvador"] },
+  { title: "Faixa Etária", items: ["18 a 54 anos"] },
+  { title: "Interesses", items: ["Estilo de Vida", "Moda", "Beleza"] },
+  { title: "Público", items: ["97% Feminino", "3% Masculino"] },
 ];
 
-const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix: string; decimals?: number; label: string }) => {
+const CountUpStat = ({
+  end,
+  suffix,
+  decimals = 0,
+  label,
+}: {
+  end: number;
+  suffix: string;
+  decimals?: number;
+  label: string;
+}) => {
   const numericEnd = decimals ? Math.round(end * Math.pow(10, decimals)) : end;
   const { count, ref } = useCountUp(numericEnd, 2000);
-  const display = decimals ? (count / Math.pow(10, decimals)).toFixed(decimals) : count;
+  const display = decimals
+    ? (count / Math.pow(10, decimals)).toFixed(decimals)
+    : count;
 
   return (
     <div ref={ref} className="text-center">
-      <p
-        className="font-display text-4xl md:text-5xl font-bold mb-2"
-        style={{
-          color: "#874637"
-        }}
-      >
-        {display}{suffix}
+      <p className="font-display text-4xl md:text-5xl font-bold mb-2" style={{ color: "#874637" }}>
+        {display}
+        {suffix}
       </p>
       <p className="font-body text-sm tracking-wide uppercase" style={{ color: "#874637" }}>
         {label}
@@ -82,20 +79,18 @@ const CountUpStat = ({ end, suffix, decimals = 0, label }: { end: number; suffix
 const SocialProofSection = () => {
   return (
     <section className="section-padding relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background */}
       <div className="absolute inset-0">
         <img
           src="/public/metricas_emilly.jpg"
           alt="Background"
           className="w-full h-full object-cover"
         />
-        {/* Light overlay for subtle contrast */}
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Content */}
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Stats with count-up */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +100,7 @@ const SocialProofSection = () => {
         >
           {stats.map((stat) => (
             <div key={stat.label} className="backdrop-blur-md bg-white/80 rounded-2xl p-6">
-              <CountUpStat end={stat.end} suffix={stat.suffix} decimals={stat.decimals} label={stat.label} />
+              <CountUpStat {...stat} />
             </div>
           ))}
         </motion.div>
@@ -121,6 +116,7 @@ const SocialProofSection = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase mb-10 text-center text-white drop-shadow-lg">
             Audiência
           </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {demographics.map((demo) => (
               <div
@@ -142,7 +138,7 @@ const SocialProofSection = () => {
           </div>
         </motion.div>
 
-        {/* Brand Logos - Infinite Scroll */}
+        {/* Brand Marquee */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -153,64 +149,31 @@ const SocialProofSection = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase mb-10 text-white drop-shadow-lg">
             Marcas que já trabalhei
           </p>
+
           <div className="backdrop-blur-md bg-white/50 rounded-3xl p-8 overflow-hidden">
             <div className="relative w-full overflow-hidden">
-              <div className="flex">
-                <motion.div
-                  className="flex gap-[3cm] flex-shrink-0"
-                  animate={{
-                    x: [0, -1 * ((160 + 113.4) * brands.length)],
-                  }}
-                  transition={{
-                    x: {
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      duration: brands.length * 1.5,
-                      ease: "linear",
-                    },
-                  }}
-                >
-                  {brands.map((brand, index) => (
-                    <div
-                      key={`${brand.name}-${index}-1`}
-                      className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
-                    >
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </div>
-                  ))}
-                </motion.div>
-                <motion.div
-                  className="flex gap-[3cm] flex-shrink-0"
-                  animate={{
-                    x: [0, -1 * ((160 + 113.4) * brands.length)],
-                  }}
-                  transition={{
-                    x: {
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      duration: brands.length * 1.5,
-                      ease: "linear",
-                    },
-                  }}
-                >
-                  {brands.map((brand, index) => (
-                    <div
-                      key={`${brand.name}-${index}-2`}
-                      className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
-                    >
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
+              <motion.div
+                className="flex items-center gap-16 w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  duration: 40,
+                  ease: "linear",
+                  repeat: Infinity,
+                }}
+              >
+                {[...brands, ...brands].map((brand, index) => (
+                  <div
+                    key={`${brand.name}-${index}`}
+                    className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 flex items-center justify-center"
+                  >
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </motion.div>
