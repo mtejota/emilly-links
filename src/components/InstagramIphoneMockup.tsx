@@ -8,24 +8,37 @@ const InstagramIphoneMockup = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="relative mx-auto w-[260px] md:w-[300px]"
+      className="relative mx-auto w-[220px] sm:w-[260px] md:w-[300px]"
     >
       {/* iPhone Body */}
-      <div className="relative aspect-[9/19.5] rounded-[40px] border-[6px] border-black bg-black shadow-2xl overflow-hidden">
-        
+      <div
+        className="
+          relative
+          h-[440px]
+          sm:h-[520px]
+          md:h-[600px]
+          rounded-[42px]
+          border-[6px]
+          border-black
+          bg-black
+          shadow-2xl
+          overflow-hidden
+        "
+      >
         {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20" />
 
         {/* Screen */}
         <img
           src={instagramScreen}
           alt="Instagram Profile"
           className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
         />
       </div>
 
       {/* Glow */}
-      <div className="absolute inset-0 rounded-[40px] bg-pink-500/10 blur-2xl -z-10" />
+      <div className="absolute inset-0 rounded-[42px] bg-pink-500/10 blur-2xl -z-10" />
     </motion.div>
   );
 };
