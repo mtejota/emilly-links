@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const slides = [ 
-  "/public/hero-black.jpg", 
+  "/hero-black.jpg", 
   
 ];
 
