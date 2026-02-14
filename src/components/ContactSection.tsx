@@ -19,11 +19,32 @@ const ContactSection = () => {
     type: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Proposta enviada com sucesso! Entrarei em contato em breve.");
-    setFormData({ name: "", email: "", company: "", type: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Proposta enviada com sucesso! Entrarei em contato em breve.");
+        setFormData({ name: "", email: "", company: "", type: "", message: "" });
+      } else {
+        toast.error("Erro ao enviar proposta. Tente novamente.");
+      }
+    } catch (error) {
+      toast.error("Erro ao enviar proposta. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -42,7 +63,7 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
+          <p className="font-body text-sm tracking-[0.3em] uppercase mb-3" style={{ color: '#874637' }}>
             Entre em contato
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -151,10 +172,12 @@ const ContactSection = () => {
 
           <button
             type="submit"
-            className="w-full gradient-gold text-gold-foreground py-4 rounded-full font-body font-medium text-base tracking-wide hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+            disabled={isSubmitting}
+            className="w-full text-white py-4 rounded-full font-body font-medium text-base tracking-wide hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50"
+            style={{ backgroundColor: '#874637' }}
           >
             <Send size={18} />
-            Enviar proposta
+            {isSubmitting ? 'Enviando...' : 'Enviar proposta'}
           </button>
         </motion.form>
       </div>
