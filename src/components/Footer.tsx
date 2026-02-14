@@ -12,7 +12,7 @@ const socials = [
     href: "https://www.tiktok.com/@meninahers",
   },
   { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@emillymayraa" },
-  { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/5511999999999" },
+  
 ];
 
 const Footer = () => {

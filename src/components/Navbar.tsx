@@ -4,8 +4,8 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "Quem sou eu ", href: "#sobre" },
-  { label: "Parcerias", href: "#parcerias" },
-  { label: "Contato", href: "#contato" },
+  { label: "Metricas", href: "#metricas" },
+  { label: "Contato", href: "#parcerias" },
 ];
 
 const Navbar = () => {

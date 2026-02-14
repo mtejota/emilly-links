@@ -78,7 +78,7 @@ const CountUpStat = ({
 
 const SocialProofSection = () => {
   return (
-    <section className="section-padding relative overflow-hidden">
+    <section id="metricas" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <img

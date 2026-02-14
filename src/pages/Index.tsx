@@ -16,7 +16,6 @@ const Index = () => {
       <SocialProofSection />
       <InstagramFeedSection />
       <PartnershipsSection />
-      <ContactSection />
       <Footer />
     </main>
   );

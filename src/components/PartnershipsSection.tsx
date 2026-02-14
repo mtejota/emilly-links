@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Handshake, TrendingUp, Users, Sparkles } from "lucide-react";
+<section id="metricas"></section>
 
 const features = [
   {
@@ -47,7 +48,9 @@ const PartnershipsSection = () => {
             </p>
             
             <a 
-              href="#contato"
+              href="https://wa.me/5583987965802?text=Olá!%20vim%20pelo%20site,%20quero%20fechar%20uma%20parceira."
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block text-white px-8 py-4 rounded-full font-body font-medium tracking-wide hover:opacity-90 transition-opacity"
               style={{ backgroundColor: '#874637' }}
             >
