@@ -45,11 +45,7 @@ const PartnershipsSection = () => {
             <p className="text-muted-foreground font-body leading-relaxed mb-6">
               Trabalho com marcas que compartilham dos mesmos valores que eu: autenticidade, qualidade e cuidado com o público. Meu foco é criar conteúdo que conecte de verdade.
             </p>
-            <div className="space-y-3 text-muted-foreground font-body text-sm mb-8">
-              <p>🎯 <strong className="text-foreground">Nichos:</strong> Beleza, Moda, Lifestyle, Skincare, Bem-estar</p>
-              <p>📊 <strong className="text-foreground">Alcance:</strong> +40k seguidores combinados</p>
-              <p>💬 <strong className="text-foreground">Engajamento:</strong> Taxa média de 4.8%</p>
-            </div>
+            
             <a
               href="#contato"
               className="inline-block gradient-gold text-gold-foreground px-8 py-4 rounded-full font-body font-medium tracking-wide hover:opacity-90 transition-opacity"
