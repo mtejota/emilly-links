@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Handshake, TrendingUp, Users, Sparkles } from "lucide-react";
-<section id="metricas"></section>
+
 
 const features = [
   {

@@ -63,7 +63,7 @@ ambos os lados
             </p>
 
             <p className="text-muted-foreground font-body leading-relaxed mb-5">
-              Acredito que estilo vai além da aparência — é sobre escolhas,
+              Acredito que estilo vai além da aparência é sobre escolhas,
               experiências e se sentir bem sendo quem você é.
             </p>
 
